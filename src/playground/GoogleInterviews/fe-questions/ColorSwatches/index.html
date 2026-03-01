@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Color Swatches</title>
+    <style>
+        .container {
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #preview {
+            width: 10rem;
+            height: 8rem;
+            transition: background-color 0.3s ease;
+            border: 1px solid black;
+        }
+
+        .color-text {
+            display: flex;
+            gap: 2rem;
+            width: fit-content;
+            color: black
+        }
+
+        #swatches {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            border: 1px solid black;
+            padding: 2rem;
+        }
+
+        #red {
+            background-color: rgb(200, 0, 0);
+        }
+
+        #yellow {
+            background-color: rgb(250, 225, 50);
+        }
+
+        #green {
+            background-color: rgb(0, 200, 0);
+        }
+
+        #blue {
+            background-color: rgb(0, 0, 200);
+        }
+
+        .swatch {
+            border-radius: 12px;
+            width: 3rem;
+            height: 3rem;
+            transition: transform 0.15s ease;
+        }
+
+        .swatch:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="">
+            <input id="alpha-slider" type="range" min="0" max="100" value="10" />
+            <span id="alpha-display"></span>
+        </div>
+
+        <div id="preview">
+            <span id="preview-text">Preview Content Here</span>
+        </div>
+
+        <div class="color-text">
+            <span id="red-color-text"></span> /
+            <span id="green-color-text"></span> /
+            <span id="blue-color-text"></span>
+        </div>
+
+        <span>
+            Hex Code of current color
+            <span id="preview-color-hex"></span>
+        </span>
+        <span>
+            Nearest Hex Code of current color
+            <span id="preview-nearest-color-hex"></span>
+        </span>
+
+        <div id="swatches">
+            <div class="swatch" role="button" aria-label="Add red" id="red" tabindex="1"></div>
+            <div class="swatch" role="button" aria-label="Add yellow" id="yellow" tabindex="1"></div>
+            <div class="swatch" role="button" aria-label="Add green" id="green" tabindex="1"></div>
+            <div class="swatch" role="button" aria-label="Add blue" id="blue" tabindex="1"></div>
+        </div>
+
+        <div class="">
+            <button id="undo-btn">Undo</button>
+            <button id="reset-btn">Reset to White</button>
+            <button id="redo-btn">Redo</button>
+        </div>
+    </div>
+    <script src="colorSwatches.js"></script>
+</body>
+
+
+</html>
