@@ -222,6 +222,8 @@ function maxEfficiencyWithBudget(n, edges, source, destination, budget){
     return ans
 }
 
+// IMP: There's no possibility of cycles here, as we keep multiplying... the product gets smaller and smaller... so it wont be a problem as we will reject it. Even in Signal Booster followup.
+
 
 // I’d model the transmission grid as a directed weighted graph where edge weights are efficiencies in (0, 1]. Since total path efficiency is the product of edge efficiencies, I need the path with maximum product.
 // A plain BFS or DFS won’t work because BFS optimizes hop count (basically can only work on un-weighted edges) and DFS over all paths is too expensive.
