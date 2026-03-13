@@ -71,7 +71,7 @@ class OrderBooksViaSeller{
         this.minHeap.push({seller_id, price, timestamp})
     }
 
-    get_lowest_seller_id(){
+    get_lowest_seller_id(){ // TC: O(NLogN), worst case
         while(this.minHeap.size()){
             const soldOrder = this.minHeap.pop()
             // If the seller has withdrawn then anyways we need to remove his products as well, 
@@ -82,6 +82,27 @@ class OrderBooksViaSeller{
             }
 
             return soldOrder.seller_id
+        }
+        return null
+    }
+
+    // Followup: If a seller can stock up more than one item as order.
+    get_lowest_seller_id_for_quantity() {
+        while (this.minHeap.size()) {
+            const order = this.minHeap.pop()
+    
+            if (this.removedOrders.has(order.seller_id)) {
+                continue
+            }
+    
+            const sellerId = order.seller_id
+            order.quantity -= 1 // Now, while pushing an item into heap, that obj will also has quantity prop
+    
+            if (order.quantity > 0) {
+                this.minHeap.push(order)
+            }
+    
+            return sellerId
         }
         return null
     }
